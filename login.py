@@ -1,6 +1,6 @@
 positionList = ['assistant']
 loginList = []
-Workers = []
+Workers = {}
 
 
 class Checker:
@@ -10,7 +10,7 @@ class Checker:
 		self.checkUserNameLogin()
 
 	def checkUserNameLogin(self):
-		LoginFind = list(filter(lambda user: user['login'] == self.username, Workers))
+		LoginFind = Workers.get(self.username)
 		if LoginFind:
 			self.LoginChecker = True
 
@@ -23,19 +23,18 @@ class Login(Checker):
 		super().__init__(username)
 
 	def create(self):
-		Workers.append({'login': self.username})
+		Workers[self.username] = {'login': self.username}
 		print(str(self) + ' создан')
 
 	def delete(self):
-		for i in range(len(Workers)):
-			if Workers[i]['login'] == self.username:
-				del Workers[i]
-				break
+		if Workers.get(self.username):
+			del Workers[self.username]
+
 		print(str(self) + ' удалён')
 
 	def get(self):
-		a = list(filter(lambda user: user['login'] == self.username, Workers))
-		print('Найдены пользователи с логинами: %s' % ' '.join(i['login'] for i in a))
+		a = Workers.get(self.username)
+		print('Найдены пользователи с логинами: %s' % a)
 
 
 class TimerQuery(Checker):
@@ -57,7 +56,7 @@ class TimerQuery(Checker):
 if __name__ == '__main__':
 	import random
 
-	b = random.randint(0, 10_000)
-	for i in range(10_000):
+	b = random.randint(0, 10_000_000)
+	for i in range(10_000_000):
 		Login(str(i)).create()
 	TimerQuery(str(b)).calculateTimeDuration()
