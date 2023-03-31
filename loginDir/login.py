@@ -1,17 +1,21 @@
-class Login(Checker):
+from . import checker
+import data
+
+
+class Login(checker.Checker):
 	def __init__(self, username):
 		super().__init__(username, password=None)
 
 	def create(self):
-		Workers[self.username] = {'login': self.username}
+		data.Workers[self.username] = {'login': self.username}
 		print(str(self) + ' создан')
 
 	def delete(self):
-		if Workers.get(self.username):
+		if data.Workers.get(self.username):
 			del Workers[self.username]
 
 		print(str(self) + ' удалён')
 
 	def get(self):
-		a = Workers.get(self.username)
+		a = data.Workers.get(self.username)
 		print('Найдены пользователи с логинами: %s' % a)
