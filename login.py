@@ -4,23 +4,31 @@ Workers = {}
 
 
 class Checker:
-	def __init__(self, username):
+	def __init__(self, username, password):
 		self.username = username
+		self.password = password
 		self.LoginChecker = False
+		self.PasswordChecker = False
 		self.checkUserNameLogin()
+		self.checkPassword()
+
 
 	def checkUserNameLogin(self):
 		LoginFind = Workers.get(self.username)
 		if LoginFind:
 			self.LoginChecker = True
 
+	def checkPassword(self):
+		if self.password:
+			if 'password' in Workers[self.username] and Workers[self.username]['password'] == self.password:
+					self.PasswordChecker = True
 	def __str__(self):
 		return 'Пользователь %s' % self.username
 
 
 class Login(Checker):
 	def __init__(self, username):
-		super().__init__(username)
+		super().__init__(username, password=None)
 
 	def create(self):
 		Workers[self.username] = {'login': self.username}
@@ -37,10 +45,26 @@ class Login(Checker):
 		print('Найдены пользователи с логинами: %s' % a)
 
 
+class Password(Checker):
+	def __init__(self, username, password):
+		super().__init__(username, password)
+		self.passwd = password
+
+	def create(self):
+		if self.LoginChecker:
+			Workers[self.username]['password'] = self.passwd
+			print(str(self) + ' создал пароль')
+
+	def update(self, newPass):
+		if self.PasswordChecker:
+			Workers[self.username][self.passwd] = newPass
+			print('Пароль обновлён')
+
+
 class TimerQuery(Checker):
 
 	def __init__(self, username):
-		super().__init__(username)
+		super().__init__(username, password=None)
 
 	def calculateTimeDuration(self):
 		import time
@@ -54,9 +78,6 @@ class TimerQuery(Checker):
 
 
 if __name__ == '__main__':
-	import random
-
-	b = random.randint(0, 10_000_000)
-	for i in range(10_000_000):
-		Login(str(i)).create()
-	TimerQuery(str(b)).calculateTimeDuration()
+	Login('usr').create()
+	Password(username='usr', password='passwd').create()
+	Password(username='usr', password='passwd').update('pass')
