@@ -1,0 +1,3 @@
+positionList = ['assistant']
+loginList = []
+databaseWorkers = []
