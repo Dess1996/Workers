@@ -1,10 +1,21 @@
 from loginDir.login import Login
 from loginDir.password import Password
 
-positionList = ['assistant']
-loginList = []
+
+class Credentials(Login, Password):
+	def __init__(self, username, password):
+		super().__init__(username)
+		Login(username).create()
+		Password(username=username, password=password).create()
+
+	def LoginGet(self, user):
+		Login(user).get()
+
+	def PasswordUpdate(self, newpassWord):
+		Password.update(self.password, newpassWord)
+
 
 if __name__ == '__main__':
-	Login('usr').create()
-	Password(username='usr', password='passwd').create()
-	Password(username='usr', password='passwd').update('pass')
+	usr = Credentials('dess', '1hrtyt')
+	usr.LoginGet('dess')
+	usr.PasswordUpdate('4e1d07') #TODO: ошибка
