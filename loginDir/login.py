@@ -21,4 +21,3 @@ class Login(checker.Checker):
 		a = data.Workers.get(self.username)
 		print('Найдены пользователи с логинами: %s' % a)
 
-print('Hello world')
