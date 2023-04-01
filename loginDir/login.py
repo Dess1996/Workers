@@ -2,6 +2,7 @@ from . import checker
 import data
 
 
+
 class Login(checker.Checker):
 	def __init__(self, username):
 		super().__init__(username, password=None)
@@ -19,3 +20,5 @@ class Login(checker.Checker):
 	def get(self):
 		a = data.Workers.get(self.username)
 		print('Найдены пользователи с логинами: %s' % a)
+
+print('Hello world')
