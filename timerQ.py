@@ -1,4 +1,4 @@
-from . import checker
+from loginDir import checker
 import time
 
 

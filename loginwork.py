@@ -1,14 +1,13 @@
-from loginDir.login import Login
-from loginDir.password import Password
+from LoginPassword.login import Login
+from LoginPassword.password import Password
 import data
 
 
 class Credentials(Login, Password):
 	def __init__(self, username, password):
-		super().__init__(username)
-		Login(username).create()
+		super().__init__(username, password)
+		Login(username, password).create()
 		Password(username=username, password=password).create()
-		self.password = password
 
 	def LoginGet(self, user):
 		Login(user).get()
@@ -21,9 +20,11 @@ class Credentials(Login, Password):
 
 
 if __name__ == '__main__':
-	usr = Credentials('dess', '1hrtyt')
+	usr = Credentials(username='dess', password='1hrtyt')
+	usr2 = Credentials(username='sue', password='1hrtyt223344')
 	usr.LoginGet('dess')
-	usr.PasswordUpdate('1hrtyt','dess')
+	usr.LoginGet('sue')
+	usr.LoginGet('mama')
+	usr.PasswordUpdate('1hrtyt', 'dess')
 	usr.LoginDelete('dess')
-
 	print(data.Workers)

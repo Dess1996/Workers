@@ -1,3 +1,0 @@
-positionList = ['assistant']
-loginList = []
-databaseWorkers = []
