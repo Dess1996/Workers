@@ -7,7 +7,7 @@ class Credentials(Login, Password):
 	def __init__(self, username, password):
 		super().__init__(username, password)
 		Login(username, password).create()
-		Password(username=username, password=password).create()
+		Password(username, password).create()
 
 	def LoginGet(self, user):
 		Login(user).get()
@@ -20,7 +20,7 @@ class Credentials(Login, Password):
 
 
 if __name__ == '__main__':
-	usr = Credentials(username='dess', password='1hrtyt')
+	usr = Credentials(username='dess', password='1hrtyt1996')
 	usr2 = Credentials(username='sue', password='1hrtyt223344')
 	usr.LoginGet('dess')
 	usr.LoginGet('sue')

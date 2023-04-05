@@ -1,13 +1,13 @@
-from Checker import checker1
+from Checker import checker
 
 
-class Login(checker1.Checker):
+class Login(checker.Checker):
 	def __init__(self, login, password=None):
 		super().__init__(login, password)
 		self.checkUserNameLogin = self.checkUserNameLogin(login)
 
 	def checkUserNameLogin(self, login):
-		checker1.Checker.checkUserNameLogin(self,login)
+		checker.Checker.checkUserNameLogin(self,login)
 
 
 
