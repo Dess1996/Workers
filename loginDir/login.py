@@ -12,7 +12,7 @@ class Login(checker.Checker):
 
 	def delete(self):
 		if data.Workers.get(self.username):
-			del Workers[self.username]
+			del data.Workers[self.username]
 
 		print(str(self) + ' удалён')
 

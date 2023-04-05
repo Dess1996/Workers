@@ -1,4 +1,5 @@
 from . import checker
+import time
 
 
 class TimerQuery(checker.Checker):
@@ -7,7 +8,7 @@ class TimerQuery(checker.Checker):
 		super().__init__(username, password=None)
 
 	def calculateTimeDuration(self):
-		import time
+
 		if self.LoginChecker:
 			nowTime = time.time()
 			Login(self.username).get()

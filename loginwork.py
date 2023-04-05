@@ -13,12 +13,17 @@ class Credentials(Login, Password):
 	def LoginGet(self, user):
 		Login(user).get()
 
-	def PasswordUpdate(self, newpassWord):
-		Password.update(self.username, self.password, newpassWord)
+	def LoginDelete(self, user):
+		Login(user).delete()
+
+	def PasswordUpdate(self, oldPassword, newpassWord):
+		Password.update(self.username, oldPassword, newpassWord)
 
 
 if __name__ == '__main__':
 	usr = Credentials('dess', '1hrtyt')
 	usr.LoginGet('dess')
-	usr.PasswordUpdate('dess')
+	usr.PasswordUpdate('1hrtyt','dess')
+	usr.LoginDelete('dess')
+
 	print(data.Workers)
