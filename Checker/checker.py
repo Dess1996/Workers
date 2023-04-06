@@ -16,7 +16,7 @@ class Checker:
 		if len(password) < 8:
 			raise AttributeError('Пароль должен быть больше 8 символов')
 		else:
-			self.checkLenPassword = True
+			return True
 
 	def __str__(self):
 		return 'Пользователь %s' % self.username

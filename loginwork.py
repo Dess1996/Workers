@@ -16,7 +16,8 @@ class Credentials(Login, Password):
 		Login(user).delete()
 
 	def PasswordUpdate(self, oldPassword, newpassWord):
-		Password.update(self.username, oldPassword, newpassWord)
+		if self.checkLengthPassword(newpassWord):
+			Password.update(self.username, oldPassword, newpassWord)
 
 
 if __name__ == '__main__':
@@ -25,6 +26,6 @@ if __name__ == '__main__':
 	usr.LoginGet('dess')
 	usr.LoginGet('sue')
 	usr.LoginGet('mama')
-	usr.PasswordUpdate('1hrtyt', 'dess')
+	usr2.PasswordUpdate('1hrtyt23333', 'qwertyuiop')
 	usr.LoginDelete('dess')
 	print(data.Workers)
