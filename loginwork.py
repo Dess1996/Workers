@@ -20,8 +20,8 @@ class Credentials(Login, Password):
 
 
 if __name__ == '__main__':
-	usr = Credentials(username='dess', password='1hrtyt1996')
-	usr2 = Credentials(username='sue', password='1hrtyt223344')
+	usr = Credentials(username='dess', password='1hrtyt222333')
+	usr2 = Credentials(username='sue', password='1hrtyt23333')
 	usr.LoginGet('dess')
 	usr.LoginGet('sue')
 	usr.LoginGet('mama')

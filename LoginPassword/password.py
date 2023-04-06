@@ -1,10 +1,11 @@
-from Checker import password_checker
+from Checker import checker
 import data
 
 
-class Password(password_checker.Password):
+class Password(checker.Checker):
     def __init__(self, username, password):
         super().__init__(username, password)
+        self.checkLengthPassword(password)
 
     def create(self):
         data.Workers[self.username]['password'] = self.password
@@ -15,3 +16,5 @@ class Password(password_checker.Password):
             data.Workers[self]['password'] = newPass
         print('Пароль обновлён')
 
+if __name__ == '__main__':
+    usr = Password('dess', '1hrtyt1996')
