@@ -16,13 +16,12 @@ class Password(checker.CheckerPassword):
         data.Workers[self.username]['password'] = self.password
 
     def update(self, oldPassword, newPass):
-#        super().checkLengthPassword(self.password) TODO: почему так не работает?
         checker.CheckerPassword.checkLengthPassword(self, newPass)
         if data.Workers[self]['password'] == oldPassword:
             data.Workers[self]['password'] = newPass
             print('Пароль обновлён')
         else:
-            raise AttributeError('Вы не ввели старый пароль')
+            raise AttributeError('Вы не ввели ваш старый пароль')
 
 
 

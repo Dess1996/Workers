@@ -26,6 +26,6 @@ if __name__ == '__main__':
 	usr.LoginGet('dess')
 	usr.LoginGet('sue')
 	usr.LoginGet('mama')
-	usr2.PasswordUpdate('1hrtyt23333', 'qwertyuiop')
+	usr2.PasswordUpdate('1hrtyt23333', '12345678')
 	usr.LoginDelete('dess')
 	print(Workers)
