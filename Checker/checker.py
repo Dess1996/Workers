@@ -1,22 +1,17 @@
 import data
+from abc import ABCMeta, abstractmethod
 
 
-class Checker:
-	def __init__(self, username, password):
-		self.LoginChecker = self.checkUserNameLogin(username)
-		self.username = username
-		self.password = password
-
+class CheckerLogin(metaclass=ABCMeta):
+	@abstractmethod
 	def checkUserNameLogin(self, username):
 		LoginFind = data.Workers.get(username)
 		if LoginFind:
-			return True
+			assert False, 'Пользователь не найден'
 
+
+class CheckerPassword(metaclass=ABCMeta):
+	@abstractmethod
 	def checkLengthPassword(self, password):
 		if len(password) < 8:
-			raise AttributeError('Пароль должен быть больше 8 символов')
-		else:
-			return True
-
-	def __str__(self):
-		return 'Пользователь %s' % self.username
+			assert False, 'Пароль должен быть больше 8 символов'

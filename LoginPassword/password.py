@@ -2,17 +2,22 @@ from Checker import checker
 import data
 
 
-class Password(checker.Checker):
+class Password(checker.CheckerPassword):
     def __init__(self, username, password):
-        super().__init__(username, password)
-        self.chPass = self.checkLengthPassword(password)
+        self.password = password
+        self.username = username
 
+
+    def checkLengthPassword(self, password):
+        pass
 
     def create(self):
+        super().checkLengthPassword(self.password)
         data.Workers[self.username]['password'] = self.password
-        print(str(self) + ' создал пароль')
 
     def update(self, oldPassword, newPass):
+#        super().checkLengthPassword(self.password) TODO: почему так не работает?
+        checker.CheckerPassword.checkLengthPassword(self, newPass)
         if data.Workers[self]['password'] == oldPassword:
             data.Workers[self]['password'] = newPass
             print('Пароль обновлён')
@@ -21,5 +26,3 @@ class Password(checker.Checker):
 
 
 
-if __name__ == '__main__':
-    usr = Password('dess', '1hrtyt1996')

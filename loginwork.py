@@ -1,13 +1,14 @@
 from LoginPassword.login import Login
 from LoginPassword.password import Password
-import data
+from Checker import checker
+from data import Workers
 
 
 class Credentials(Login, Password):
 	def __init__(self, username, password):
-		super().__init__(username, password)
-		Login(username, password).create()
-		Password(username, password).create()
+		super().__init__(username)
+		Login(username).create()
+		Password(username,password).create()
 
 	def LoginGet(self, user):
 		Login(user).get()
@@ -15,9 +16,8 @@ class Credentials(Login, Password):
 	def LoginDelete(self, user):
 		Login(user).delete()
 
-	def PasswordUpdate(self, oldPassword, newpassWord):
-		if self.checkLengthPassword(newpassWord):
-			Password.update(self.username, oldPassword, newpassWord)
+	def PasswordUpdate(self,  OldPassword, newpassWord):
+		Password.update(self.username, OldPassword, newpassWord)
 
 
 if __name__ == '__main__':
@@ -28,4 +28,4 @@ if __name__ == '__main__':
 	usr.LoginGet('mama')
 	usr2.PasswordUpdate('1hrtyt23333', 'qwertyuiop')
 	usr.LoginDelete('dess')
-	print(data.Workers)
+	print(Workers)
