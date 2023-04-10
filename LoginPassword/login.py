@@ -30,7 +30,3 @@ class Login(checker.CheckerLogin):
 	def __repr__(self):
 		return 'Пользователь: %s' % (self.username)
 
-
-if __name__ == '__main__':
-	usr = Login('dess')
-	usr.create()
