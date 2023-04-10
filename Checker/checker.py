@@ -18,5 +18,9 @@ class CheckerPassword(metaclass=ABCMeta):
 			assert False, 'Пароль должен быть больше 8 символов'
 
 	@abstractmethod
-	def checkEncription(self, password):
-		pass
+	def checkEncription(self, password, employmentPassword):
+		passwd = str(password).encode()
+		if bcrypt.checkpw(passwd, employmentPassword):
+			print('Пароль пользователя %s корректный' % self)
+		else:
+			assert False, 'Пароли не совпадают'

@@ -26,5 +26,5 @@ if __name__ == '__main__':
 	usr.LoginGet('dess')
 	usr.LoginGet('sue')
 	usr.LoginGet('mama')
-	if bcrypt.checkpw(b'1hrtyt222333', b'$2b$12$ClxMi2.XMye.wMe2T6g8QuDeOJH/JVzhNGdmvuCvdz90uS4/e6rRy'):
-		print('Correct')
+	usr.PasswordUpdate('1hrtyt222333', '4e1d072006')
+	print(Workers)
