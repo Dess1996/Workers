@@ -1,5 +1,5 @@
 from Checker import checker
-import data, salt
+import data
 import bcrypt
 
 
@@ -14,8 +14,17 @@ class Password(checker.CheckerPassword):
 	def checkEncription(self, password, employmentPassword):
 		pass
 
+	def checkOnNumbers(self, password):
+		pass
+
+	def checkOnUppers(self, password):
+		pass
+
 	def create(self):
 		super().checkLengthPassword(self.password)
+		super().checkOnNumbers(self.password)
+		super().checkOnUppers(self.password)
+
 		password = str.encode(self.password)
 		hashed = bcrypt.hashpw(password, bcrypt.gensalt())
 		data.Workers[self.username]['password'] = hashed

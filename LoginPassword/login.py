@@ -1,17 +1,24 @@
+from abc import ABC
+
 from Checker import checker
+from LoginPassword import dates
 from data import Workers
 
 
-class Login(checker.CheckerLogin):
+class Login(checker.CheckerLogin, dates.DateTimer):
 	def __init__(self, username):
 		self.username = username
+
+	def setCurrentTime(self):
+		pass
 
 	def checkUserNameLogin(self, username):
 		pass
 
 	def create(self):
 		super().checkUserNameLogin(self.username)
-		Workers[self.username] = {'login': self.username}
+
+		Workers[self.username] = {'login': self.username, 'DateOfCreation': super().setCurrentTime()}
 		print(str(self) + ' создан')
 
 	def delete(self):

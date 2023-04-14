@@ -1,6 +1,7 @@
 import data
 from abc import ABCMeta, abstractmethod
 import bcrypt
+import re
 
 
 class CheckerLogin(metaclass=ABCMeta):
@@ -24,3 +25,17 @@ class CheckerPassword(metaclass=ABCMeta):
 			print('Пароль пользователя %s корректный' % self)
 		else:
 			assert False, 'Пароли не совпадают'
+
+	@abstractmethod
+	def checkOnNumbers(self, password):
+		pattern = re.compile(r'[0-9]+')
+		NumbersInPassword = re.findall(pattern, password)
+		if not NumbersInPassword:
+			assert False, 'Пароль не содержит цифр'
+
+	@abstractmethod
+	def checkOnUppers(self, password):
+		pattern = re.compile(r'[A-Z]+')
+		UpperCasesInLetters = re.findall(pattern, password)
+		if not UpperCasesInLetters:
+			assert False, 'Пароль не содержит заглавных символов'
