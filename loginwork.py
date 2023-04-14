@@ -27,6 +27,6 @@ if __name__ == '__main__':
 	usr.LoginGet('dess')
 	usr.LoginGet('sue')
 	usr.LoginGet('mama')
-	usr.PasswordUpdate('1hrtyt222333', '4e1d072006')
+	usr.PasswordUpdate('Qwertyiop1234', '4E1d072006')
 	print(
-		Workers)  # Output: {'dess': {'login': 'dess', 'password': # b'$2b$12$mX65cK73RNhQHVb.cj8lPOn4Um0LHMRN/e88vPozQXqafHvVk8zY.'}}
+		Workers)  # {'dess': {'login': 'dess', 'DateOfCreation': '14-04-2023', 'password': b'$2b$12$5h8OFsPViHT.nKtTYw/RJ.bo7.cT2KtwX4KiUuMmOWCKKqW/w2VD2'}}
